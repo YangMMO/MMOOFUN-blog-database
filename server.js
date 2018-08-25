@@ -32,11 +32,12 @@ if (cluster.isMaster) {
         console.info(`worker[${worker.process.pid}] suicide`);
         cluster.fork();
       }
-      if (info.err.date > errDate + 10000) {
-        errDate = info.err.date;
-        console.log('err: ' + errDate)
+      console.log(info)
+      // if (info.err.date > errDate + 10000) {
+      //   errDate = info.err.date;
+        // console.log('err: ' + errDate)
         // mail.send('[服务器异常]' + err.toString(), err.stack)
-      }
+      // }
     });
     console.info(`worker[${worker.process.pid}] fork success`);
   });
