@@ -9,7 +9,7 @@ if (cluster.isMaster) {
   cluster.schedulingPolicy = cluster.SCHED_RR;
 
   let workers = {};
-  let errDate;
+  let errDate = new Date().getTime();
 
   // 创建工作进程
   for (let i = 0; i < cpuNum; i++) {
@@ -33,7 +33,8 @@ if (cluster.isMaster) {
         cluster.fork();
       }
       if (info.err) {
-        errDate = new Date();
+        if (new Date.getTime() < errDate + 10000) return;
+        errDate = new Date().getDate();
         console.log('err: ' + errDate)
         // mail.send('[服务器异常]' + err.toString(), err.stack)
       }
