@@ -28,17 +28,17 @@ if (cluster.isMaster) {
 
     // 进程通信
     worker.on('message', info => {
-      if (info.act === 'suicide') {
-        console.info(`worker[${worker.process.pid}] suicide`);
-        cluster.fork();
-      }
-
       if (info.error) {
         if (info.error.date < errDate + 10000) return;
         // [date] > errDate + 10000
         errDate = info.err.date;
         console.log('err: ' + errDate)
         // mail.send('[服务器异常]' + err.toString(), err.stack)
+      }
+
+      if (info.act === 'suicide') {
+        console.info(`worker[${worker.process.pid}] suicide`);
+        cluster.fork();
       }
     });
     console.info(`worker[${worker.process.pid}] fork success`);
