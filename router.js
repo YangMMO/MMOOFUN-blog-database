@@ -28,6 +28,7 @@ exports.router = function(req,res){
     let action;
 
     logger.info(req.socket.remoteAddress + ' ' + req.method + ' ' + pathname);
+    console.log(req.socket.remoteAddress)
 
     rules.forEach(rule=>{
         if(rule.pattern.test(pathname)){
