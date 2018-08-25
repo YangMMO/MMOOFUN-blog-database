@@ -1,4 +1,9 @@
 
+
+const log4js = require('log4js');
+let logger = log4js.getLogger();
+logger.level = 'info';
+
 const url = require('url');
 
 const rules = [
@@ -21,6 +26,8 @@ exports.router = function(req,res){
     let urlObj = url.parse(req.url);
     let pathname = urlObj.pathname;
     let action;
+
+    logger.info(req.socket.remoteAddress + ' ' + req.method + ' ' + pathname);
 
     rules.forEach(rule=>{
         if(rule.pattern.test(pathname)){
