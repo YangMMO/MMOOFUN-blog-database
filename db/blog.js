@@ -2,6 +2,7 @@
 
 const path = require('path');
 const Sequelize = require('sequelize');
+const Op = Sequelize.Op
 
 const sequelize = new Sequelize('my_db', 'root', '', {
     host: 'localhost',
@@ -11,6 +12,15 @@ const sequelize = new Sequelize('my_db', 'root', '', {
         min: 0,
         acquire: 30000,
         idle: 10000
+    },
+    operatorsAliases: {
+      $and: Op.and,
+      $or: Op.or,
+      $eq: Op.eq,
+      $gt: Op.gt,
+      $lt: Op.lt,
+      $lte: Op.lte,
+      $like: Op.like
     }
 });
 

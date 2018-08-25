@@ -11,12 +11,13 @@
   "license": "ISC",
   "dependencies": {
     "log4js": "^3.0.5",
-    "mysql2": "^1.5.3",
+    "mysql2": "^1.6.1",
     "nodemailer": "^4.6.8",
-    "sequelize": "^4.29.0"
+    "request": "^2.88.0",
+    "sequelize": "^4.38.0"
   },
   "devDependencies": {
-    "marked": "^0.3.9",
+    "marked": "^0.3.19",
     "moment": "^2.20.1"
   }
 }
