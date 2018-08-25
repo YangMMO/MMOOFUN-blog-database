@@ -3,7 +3,6 @@
 const cluster = require('cluster');
 const cpuNum = require('os').cpus().length;
 const mail = require('./mail.js');
-const http = require('http');
 
 //创建cluster集群
 if (cluster.isMaster) {
