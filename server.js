@@ -35,7 +35,7 @@ if (cluster.isMaster) {
         console.info(`worker[${worker.process.pid}] suicide`);
         cluster.fork();
 
-        if (err.date > prevDate + 10000) {
+        if (err.date > prevDate + 600000) {
           prevDate = err.date;
           mail.send('[服务器异常]' + err.title, err.content)
         }

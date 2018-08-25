@@ -23,8 +23,6 @@ server.on('request', (req, res) => {
 
   clearTimeout(timerId);
 
-  fun();
-
   require('./router').router(req,res);
 })
 
