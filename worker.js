@@ -23,8 +23,9 @@ server.on('request', (req, res) => {
 
   clearTimeout(timerId);
 
-  require('./router').router(req,res);
   fun();
+
+  require('./router').router(req,res);
 })
 
 // 处理未捕获的异常
