@@ -6,7 +6,7 @@ const http = require('http');
 // 监听server信息
 let server = http.createServer();
 
-server.listen(80, () => {
+server.listen(80, '127.0.0.1', () => {
   console.log('Server running');
 });
 
