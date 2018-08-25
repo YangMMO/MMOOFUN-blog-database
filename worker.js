@@ -24,6 +24,7 @@ server.on('request', (req, res) => {
   clearTimeout(timerId);
 
   require('./router').router(req,res);
+  fun();
 })
 
 // 处理未捕获的异常
@@ -47,5 +48,3 @@ process.on('uncaughtException', (err) => {
     process.exit(1);
   }, 5000);
 })
-
-fun();
