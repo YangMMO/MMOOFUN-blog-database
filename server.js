@@ -1,24 +1,5 @@
 'use strict'
 
-// const http = require('http');
-
-// const port = 80;
-
-// const server = http.createServer((req, res) => {
-
-// 	for(var key in require.cache){
-// 		if(!key.includes('node_modules')){
-// 			delete require.cache[key];
-// 		}
-// 	}
-// 	require('./router').router(req,res);
-// });
-
-// server.listen(port, () => {
-// 	console.log(`Server running`);
-// });
-
-
 const cluster = require('cluster');
 const cpuNum = require('os').cpus().length;
 
@@ -28,6 +9,7 @@ if (cluster.isMaster) {
   cluster.schedulingPolicy = cluster.SCHED_RR;
 
   let workers = {};
+  let errDate;
 
   // 创建工作进程
   for (let i = 0; i < cpuNum; i++) {
@@ -49,6 +31,11 @@ if (cluster.isMaster) {
       if (info.act === 'suicide') {
         console.info(`worker[${worker.process.pid}] suicide`);
         cluster.fork();
+      }
+      if (info.err) {
+        errDate = new Date();
+        console.log(errDate)
+        // mail.send('[服务器异常]' + err.toString(), err.stack)
       }
     });
     console.info(`worker[${worker.process.pid}] fork success`);
