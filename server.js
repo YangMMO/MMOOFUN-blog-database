@@ -30,12 +30,14 @@ if (cluster.isMaster) {
     // 进程通信
     worker.on('message', info => {
       if (info.act === 'suicide') {
+        let err = info.error;
+
         console.info(`worker[${worker.process.pid}] suicide`);
         cluster.fork();
 
-        if (info.date > prevDate + 10000) {
-          prevDate = info.date;
-          mail.send('[服务器异常]' + info.err.toString(), info.err.stack)
+        if (err.date > prevDate + 10000) {
+          prevDate = err.date;
+          mail.send('[服务器异常]' + err.title, err.content)
         }
       }
     });
