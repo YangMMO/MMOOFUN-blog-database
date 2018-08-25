@@ -21,13 +21,7 @@ const sequelize = new Sequelize('my_db', 'root', '123456', {
       $lt: Op.lt,
       $lte: Op.lte,
       $like: Op.like
-    },
-    dialectOptions: {
-      charset: "utf8mb4",
-      collate: "utf8mb4_unicode_ci",
-      supportBigNumbers: true,
-      bigNumberStrings: true
-  }
+    }
 });
 
 //定义模型
