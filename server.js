@@ -33,8 +33,8 @@ if (cluster.isMaster) {
         cluster.fork();
       }
 
-      if (info.error.date > errDate + 10000) {
-        errDate = info.err.date;
+      if (info.error[date] > errDate + 10000) {
+        errDate = info.err[date];
         console.log('err: ' + errDate)
         // mail.send('[服务器异常]' + err.toString(), err.stack)
       }
