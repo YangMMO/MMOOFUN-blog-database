@@ -3,8 +3,8 @@
 const log4js = require('log4js');
 let logger = log4js.getLogger();
 log4js.configure({
-  appenders: { cheese: { type: 'file', filename: 'cheese.log' } },
-  categories: { default: { appenders: ['cheese'], level: 'error' } }
+  appenders: { cheese: { type: 'file', filename: 'logs/access.log' } },
+  categories: { default: { appenders: ['cheese'], level: 'info' } }
 })
 
 // logger.level = 'info';
