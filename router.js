@@ -1,13 +1,9 @@
 'use strict'
 
 const log4js = require('log4js');
-let logger = log4js.getLogger();
-log4js.configure({
-  appenders: { cheese: { type: 'file', filename: 'logs/access.log' } },
-  categories: { default: { appenders: ['cheese'], level: 'info' } }
-})
+const logger = log4js.getLogger();
 
-// logger.level = 'info';
+logger.level = 'info';
 
 const url = require('url');
 
