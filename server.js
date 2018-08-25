@@ -1,7 +1,6 @@
 const http = require('http');
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const port = 80;
 
 const server = http.createServer((req, res) => {
 
@@ -13,6 +12,6 @@ const server = http.createServer((req, res) => {
 	require('./router').router(req,res);
 });
 
-server.listen(port, hostname, () => {
-	console.log(`Server running at http://${hostname}:${port}/`);
+server.listen(port, () => {
+	console.log(`Server running`);
 });
