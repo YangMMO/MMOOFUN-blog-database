@@ -37,8 +37,8 @@ process.on('uncaughtException', (err) => {
   console.info(`error: ${err}`);
   process.send({
     act: 'suicide', 
-    err: {
-      error: err,
+    error: {
+      err: err,
       date: new Date().getTime()
     } 
   });
