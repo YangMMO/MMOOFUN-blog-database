@@ -33,8 +33,9 @@ if (cluster.isMaster) {
         cluster.fork();
       }
       if (info.err) {
-        if (Date.getTime() < errDate + 10000) return;
-        errDate = new Date().getDate();
+        let date = new Date.getTime()
+        if (date < errDate + 10000) return;
+        errDate = date;
         console.log('err: ' + errDate)
         // mail.send('[服务器异常]' + err.toString(), err.stack)
       }
