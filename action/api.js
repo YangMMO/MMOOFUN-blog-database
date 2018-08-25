@@ -1,3 +1,5 @@
+'use strict'
+
 const url = require('url');
 const qs = require('querystring');
 const blog = require('../db/blog')
