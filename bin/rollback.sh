@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm -rf ../blog
-cp -r ../blog-backup ../blog
+rm -rf ../blogdemo
+cp -r ../blog-backup ../blogdemo
 /bin/stop.sh
 /bin/start.sh
