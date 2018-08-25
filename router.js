@@ -3,13 +3,12 @@
 const log4js = require('log4js');
 let logger = log4js.getLogger();
 log4js.configure({
-  appenders: [{
-    type: 'console'
-  }, {
-    type: 'dateFile',
-    filename: 'logs/',
-    pattern: "access.log"
-  }]
+  appenders: {
+    everything: { type: 'file', filename: 'logs/yy-MM-dd.log' }
+  },
+  categories: {
+    default: { appenders: [ 'everything' ], level: 'debug' }
+  }
 })
 
 logger.level = 'info';
