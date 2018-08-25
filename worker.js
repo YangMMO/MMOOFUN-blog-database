@@ -49,4 +49,4 @@ process.on('uncaughtException', (err) => {
   }, 5000);
 })
 
-funct()
+// funct()
