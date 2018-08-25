@@ -48,11 +48,7 @@ if (cluster.isMaster) {
   // require('./worker.js');
 
   // 监听server信息
-  let server = http.createServer();
-  server.listen(80, () => {
-    console.log('Server running');
-  });
-  server.on('request', (req, res) => {
+  let server = http.createServer((req, res) => {
     for(var key in require.cache){
       if(!key.includes('node_modules')){
         delete require.cache[key];
@@ -67,7 +63,29 @@ if (cluster.isMaster) {
     clearTimeout(timerId);
 
     require('./router').router(req,res);
-  })
+  });
+
+  server.listen(80, () => {
+    console.log('Server running');
+  });
+
+
+  // server.on('request', (req, res) => {
+  //   for(var key in require.cache){
+  //     if(!key.includes('node_modules')){
+  //       delete require.cache[key];
+  //     }
+  //   }
+
+  //   // 处理超时
+  //   const timerId = setTimeout(() => {
+  //     res.end(`processing timeout`);
+  //   }, 10000);
+
+  //   clearTimeout(timerId);
+
+  //   require('./router').router(req,res);
+  // })
 
   // 处理未捕获的异常
   let errNum = 0;
