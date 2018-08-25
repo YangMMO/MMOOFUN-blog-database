@@ -35,7 +35,13 @@ process.on('uncaughtException', (err) => {
   errNum++;
 
   console.info(`error: ${err}`);
-  process.send({act: 'suicide', err: err});
+  process.send({
+    act: 'suicide', 
+    err: {
+      error: err,
+      date: new Date().getTime()
+    } 
+  });
   // mail.send('[服务器异常]' + err.toString(), err.stack)
   
   // 关闭进程不接受请求

@@ -32,10 +32,8 @@ if (cluster.isMaster) {
         console.info(`worker[${worker.process.pid}] suicide`);
         cluster.fork();
       }
-      if (info.err) {
-        let date = new Date.getTime()
-        if (date < errDate + 10000) return;
-        errDate = date;
+      if (info.err.date > errDate + 10000) {
+        errDate = info.err.date;
         console.log('err: ' + errDate)
         // mail.send('[服务器异常]' + err.toString(), err.stack)
       }
