@@ -35,7 +35,7 @@ if (cluster.isMaster) {
 
         if (info.date > prevDate + 10000) {
           prevDate = info.date;
-          mail.send('[服务器异常]' + err.toString(), err.stack)
+          mail.send('[服务器异常]' + info.err.toString(), info.err.stack)
         }
       }
     });
