@@ -21,14 +21,13 @@ const rules = [
     }
 ]
 
-exports.router = function(req,res){
+exports.router = async function(req,res){
 
     let urlObj = url.parse(req.url);
     let pathname = urlObj.pathname;
     let action;
 
-    logger.info(req.socket.remoteAddress + ' ' + req.method + ' ' + pathname);
-    console.log(req.socket.remoteAddress)
+    await logger.info(req.socket.remoteAddress + ' ' + req.method + ' ' + pathname);
 
     rules.forEach(rule=>{
         if(rule.pattern.test(pathname)){

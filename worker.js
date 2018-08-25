@@ -1,14 +1,15 @@
 'use strict'
 
 const http = require('http');
-const mail = require('./mail.js');
 
 
 // 监听server信息
 let server = http.createServer();
+
 server.listen(80, () => {
   console.log('Server running');
 });
+
 server.on('request', (req, res) => {
   for(var key in require.cache){
 		if(!key.includes('node_modules')){
@@ -25,6 +26,7 @@ server.on('request', (req, res) => {
 
   require('./router').router(req,res);
 })
+
 
 // 处理未捕获的异常
 let errNum = 0;
