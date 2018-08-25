@@ -7,11 +7,11 @@ log4js.configure({
     everything: { type: 'file', filename: 'logs/yy-MM-dd.log' }
   },
   categories: {
-    default: { appenders: [ 'everything' ], level: 'debug' }
+    default: { appenders: [ 'everything' ], level: 'info' }
   }
 })
 
-logger.level = 'info';
+// logger.level = 'info';
 
 const url = require('url');
 
