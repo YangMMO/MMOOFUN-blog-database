@@ -2,5 +2,5 @@
 
 cp -r ../blogdemo ../blog-backup
 git pull
-/bin/stop.sh
-/bin/start.sh
+bin/stop.sh
+bin/start.sh
