@@ -34,7 +34,7 @@ if (cluster.isMaster) {
       }
       if (info.err) {
         errDate = new Date();
-        console.log(errDate)
+        console.log('err: ' + errDate)
         // mail.send('[服务器异常]' + err.toString(), err.stack)
       }
     });
