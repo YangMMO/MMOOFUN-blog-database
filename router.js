@@ -1,8 +1,8 @@
 'use strict'
 
-// const log4js = require('log4js');
-// let logger = log4js.getLogger();
-// logger.level = 'info';
+const log4js = require('log4js');
+let logger = log4js.getLogger();
+logger.level = 'info';
 
 const url = require('url');
 
@@ -27,7 +27,7 @@ exports.router = function(req,res){
     let pathname = urlObj.pathname;
     let action;
 
-    // logger.info(req.socket.remoteAddress + ' ' + req.method + ' ' + pathname);
+    logger.info(req.socket.remoteAddress + ' ' + req.method + ' ' + pathname);
 
     rules.forEach(rule=>{
         if(rule.pattern.test(pathname)){
