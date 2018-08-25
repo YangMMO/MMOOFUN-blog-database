@@ -9,7 +9,7 @@ if (cluster.isMaster) {
   cluster.schedulingPolicy = cluster.SCHED_RR;
 
   let workers = {};
-  let errDate = new Date().getTime();
+  let prevDate = new Date().getTime();
 
   // 创建工作进程
   for (let i = 0; i < cpuNum; i++) {
@@ -31,6 +31,10 @@ if (cluster.isMaster) {
       if (info.act === 'suicide') {
         console.info(`worker[${worker.process.pid}] suicide`);
         cluster.fork();
+
+        if (info.date > prevDate + 10000) {
+          console.log(info.err)
+        }
       }
     });
     console.info(`worker[${worker.process.pid}] fork success`);
