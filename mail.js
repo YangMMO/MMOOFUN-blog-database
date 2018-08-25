@@ -10,7 +10,7 @@ let transporter = nodemailer.createTransport({
   secure: true,
   auth: {
     user: '11436052@qq.com',
-    pass: '123' //QQ邮箱需要使用授权码
+    pass: 'evufifbmxsgpcahi' //QQ邮箱需要使用授权码
   }
 })
 
