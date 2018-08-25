@@ -2,6 +2,16 @@
 
 const log4js = require('log4js');
 let logger = log4js.getLogger();
+log4js.configure({
+  appenders: [{
+    type: 'console'
+  }, {
+    type: 'dateFile',
+    filename: 'logs/',
+    pattern: "access.log"
+  }]
+})
+
 logger.level = 'info';
 
 const url = require('url');
@@ -21,13 +31,13 @@ const rules = [
     }
 ]
 
-exports.router = async function(req,res){
+exports.router = function(req,res){
 
     let urlObj = url.parse(req.url);
     let pathname = urlObj.pathname;
     let action;
 
-    await logger.info(req.socket.remoteAddress + ' ' + req.method + ' ' + pathname);
+    logger.info(req.socket.remoteAddress + ' ' + req.method + ' ' + pathname);
 
     rules.forEach(rule=>{
         if(rule.pattern.test(pathname)){
