@@ -2,6 +2,7 @@
 
 const cluster = require('cluster');
 const cpuNum = require('os').cpus().length;
+const mail = require('./mail');
 
 //创建cluster集群
 if (cluster.isMaster) {
@@ -33,7 +34,8 @@ if (cluster.isMaster) {
         cluster.fork();
 
         if (info.date > prevDate + 10000) {
-          console.log(info.err)
+          prevDate = info.date;
+          mail.send('[服务器异常]' + err.toString(), err.stack)
         }
       }
     });
