@@ -2,6 +2,8 @@
 
 const log4js = require('log4js');
 const logger = log4js.getLogger();
+const fs = require('fs');
+const path = require('path');
 
 logger.level = 'info';
 
@@ -39,9 +41,12 @@ exports.router = function(req,res){
     if(action){
         require('./action/'+action)(req,res)
     }else{
-        res.statusCode = 404;
-        res.setHeader('Content-Type', 'text/plain');
-        res.end();
+        const staticPath = path.resolve(__dirname,'./static/404.html');
+        res.writeHead(404, {'Content-Type': 'text/html'})
+        fs.readFile(staticPath, (err, data) => {
+          if(err) throw err;
+          res.end(data)
+        })
     }
 
 }
